@@ -1674,6 +1674,29 @@ last &lt; 5 | last &gt;10</code></pre>
 <pre class="r"><code># Is last between 15 (exclusive) and 20 (inclusive)?
 last &gt;15 &amp; last &lt;=20</code></pre>
 <pre><code>## [1] FALSE</code></pre>
+<pre class="r"><code># The social data (linkedin, facebook, views) has been created for you
+
+# linkedin exceeds 10 but facebook below 10
+linkedin &gt; 10 &amp; facebook &lt;10</code></pre>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>linkedin</code></pre>
+<pre><code>## [1] 16  9 13  5  2 17 14</code></pre>
+<pre class="r"><code>facebook</code></pre>
+<pre><code>## [1] 17  7  5 16  8 13 14</code></pre>
+<pre class="r"><code># When were one or both visited at least 12 times?
+linkedin &gt;= 12 | facebook &gt;=12</code></pre>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE</code></pre>
+<pre class="r"><code># When is views between 11 (exclusive) and 14 (inclusive)?
+
+
+views &gt;11 &amp; views &lt;= 14</code></pre>
+<pre><code>##       [,1]  [,2]  [,3]  [,4]  [,5]  [,6] [,7]
+## [1,] FALSE FALSE  TRUE FALSE FALSE FALSE TRUE
+## [2,] FALSE FALSE FALSE FALSE FALSE  TRUE TRUE</code></pre>
+<pre class="r"><code>x &lt;- 5
+y &lt;- 7
+!(!(x &lt; 4) &amp; !!!(y &gt; 12))</code></pre>
+<pre><code>## [1] FALSE</code></pre>
 </div>
 
 
