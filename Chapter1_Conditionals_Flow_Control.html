@@ -1698,6 +1698,92 @@ y &lt;- 7
 !(!(x &lt; 4) &amp; !!!(y &gt; 12))</code></pre>
 <pre><code>## [1] FALSE</code></pre>
 </div>
+<div id="the-if-statement" class="section level2">
+<h2>The IF statement</h2>
+<p>In general, we have</p>
+<pre><code>if (condition) {
+  expr1
+} else {
+  expr2
+}</code></pre>
+<p>Below uses the <span class="math inline">\(&lt;code&gt;\)</span>
+code. <code> if (condition) { expr1 } else { expr2 } </code></p>
+<p>Another way with the back-tic:</p>
+<pre><code>if (condition) {
+  expr1
+} else {
+  expr2
+}</code></pre>
+<p>Below is unformatted: if (condition) { expr1 } else { expr2 }</p>
+<pre class="r"><code># Variables related to your last day of recordings
+medium &lt;- &quot;LinkedIn&quot;
+num_views &lt;- 14
+
+# Examine the if statement for medium
+if (medium == &quot;LinkedIn&quot;) {
+  print(&quot;Showing LinkedIn information&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Showing LinkedIn information&quot;</code></pre>
+<pre class="r"><code># Write the if statement for num_views
+if (num_views &gt; 15){
+  print(&quot;You are popular!&quot;)
+}</code></pre>
+</div>
+<div id="adding-an-else" class="section level2">
+<h2>Adding an ELSE</h2>
+<pre class="r"><code># Let&#39;s add in an else:
+
+# Control structure for medium
+if (medium == &quot;LinkedIn&quot;) {
+  print(&quot;Showing LinkedIn information&quot;)
+} else{
+  print(&quot;Unknown medium&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Showing LinkedIn information&quot;</code></pre>
+<pre class="r"><code># Control structure for num_views
+if (num_views &gt; 15) {
+  print(&quot;You&#39;re popular!&quot;)
+} else {
+  print(&quot;Try to be more visible!&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Try to be more visible!&quot;</code></pre>
+</div>
+<div id="adding-else-if" class="section level2">
+<h2>Adding ELSE IF</h2>
+<pre><code>if (condition1) {
+  expr1
+} else if (condition2) {
+  expr2
+} else if (condition3) {
+  expr3
+} else {
+  expr4
+}</code></pre>
+<pre class="r"><code># Variables related to your last day of recordings
+medium &lt;- &quot;LinkedIn&quot;
+num_views &lt;- 14
+
+# Control structure for medium
+if (medium == &quot;LinkedIn&quot;) {
+  print(&quot;Showing LinkedIn information&quot;)
+} else if (medium == &quot;Facebook&quot;) {
+  print(&quot;Showing Facebook information&quot;)
+} else {
+  print(&quot;Unknown medium&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Showing LinkedIn information&quot;</code></pre>
+<pre class="r"><code># Control structure for num_views
+if (num_views &gt; 15) {
+  print(&quot;You&#39;re popular!&quot;)
+} else if (num_views &lt;= 15 &amp; num_views &gt; 10) {
+  print(&quot;Your number of views is average&quot;)
+
+
+} else {
+  print(&quot;Try to be more visible!&quot;)
+}</code></pre>
+<pre><code>## [1] &quot;Your number of views is average&quot;</code></pre>
+</div>
 
 
 
