@@ -1,0 +1,286 @@
+---
+title: "Chapter2_Loops"
+author: "Emilio Vasquez"
+date: "2022-12-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## While Loops
+
+```
+while (condition) {
+  expr
+}
+```
+
+Example 1:
+
+```{r}
+# Initialize the speed variable
+speed <- 64
+
+# Code the while loop
+while (speed > 30) {
+  print("Slow down!")
+  speed <- speed-7
+}
+
+# Print out the speed variable
+speed
+```
+
+Example 2:
+```{r}
+
+# Initialize the speed variable
+speed <- 64
+
+# Extend/adapt the while loop
+while (speed > 30) {
+  print(paste("Your speed is",speed))
+  if ( speed >48) {
+    print("Slow down big time!")
+    speed <- speed-11
+  } else {
+    print("Slow down!")
+    speed<- speed-6
+  }
+}
+
+```
+
+Example 3: Here, we stop the while loop with a break.
+
+```{r}
+
+# Initialize the speed variable
+speed <- 88
+
+while (speed > 30) {
+  print(paste("Your speed is", speed))
+  
+  # Break the while loop when speed exceeds 80
+  if (speed>80) {
+  break  
+  }
+  
+  if (speed > 48) {
+    print("Slow down big time!")
+    speed <- speed - 11
+  } else {
+    print("Slow down!")
+    speed <- speed - 6
+  }
+}
+
+```
+
+
+Building a loop from scratch.
+
+```{r}
+# Initialize i as 1 
+i <- 1
+
+# Code the while loop
+while (i <= 10) {
+  print(3 * i)
+  if ((i * 3) %% 8 == 0) { #Checks to see if divisible by 8
+    break
+  }
+  i <- i + 1
+}
+```
+
+# for loop
+
+```{r}
+primes <- c(2, 3, 5, 7, 11, 13)
+
+# loop version 1
+#Clean, but do not have access to our index. 
+for (p in primes) {
+  print(p)
+}
+
+# loop version 2
+#This second loops gives us access to our index. 
+for (i in 1:length(primes)) {
+  print(primes[i])
+}
+
+```
+## Example. Looping over vector: 
+Can skin this cat two ways.
+```{r}
+
+# The linkedin vector has already been defined for you
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+# Loop version 1
+for (i in linkedin){
+    print(i)
+}
+
+
+
+# Loop version 2
+for (i in 1:length(linkedin)) {
+    print(linkedin[i])
+
+}
+
+```
+
+Can also iterate over list:
+
+```
+primes_list <- list(2, 3, 5, 7, 11, 13)
+
+# loop version 1
+for (p in primes_list) {
+  print(p)
+}
+
+# loop version 2
+for (i in 1:length(primes_list)) {
+  print(primes_list[[i]])
+}
+```
+
+```{r}
+
+# The nyc list is already specified
+nyc <- list(pop = 8405837, 
+            boroughs = c("Manhattan", "Bronx", "Brooklyn", "Queens", "Staten Island"), 
+            capital = FALSE)
+
+# Loop version 1
+for (i in nyc){
+    print(i)
+}
+
+
+
+# Loop version 2
+for (i in 1:length(nyc)){
+    print(nyc[[i]])
+}
+
+
+
+# Loop version 2 SIDE NOTE:
+#If you notice the single [], this causes it to print the i'th item in list. 
+for (i in 1:length(nyc)){
+    print(nyc[i])
+}
+
+```
+## Looping over a matrix
+
+
+Will consist of two loops
+
+```
+for (var1 in seq1) {
+  for (var2 in seq2) {
+    expr
+  }
+}
+```
+
+```{r}
+indep_vec<- c('0',NA,'X',NA,'0','0','X',NA,'X')
+ttt<- matrix(indep_vec,nrow=3,ncol=3,byrow=TRUE)
+
+
+
+# define the double for loop
+for (i in 1:nrow(ttt)) {
+  for (j in 1:ncol(ttt)) {
+    print(paste("On row", i,"and column", j, "the board contains", ttt[i,j]))
+  }
+}
+
+ttt
+
+```
+
+## Mix it up with control flow:
+
+```{r}
+# The linkedin vector has already been defined for you
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+# Code the for loop with conditionals
+for (li in linkedin) {
+  if (li>10) {
+    print("You're popular!")
+  } else {
+    print("Be more visible!")
+  }
+  print(li)
+}
+```
+
+
+
+## Throw in some extra if statements
+
+```{r}
+
+# The linkedin vector has already been defined for you
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+
+# Adapt/extend the for loop
+for (li in linkedin) {
+  if (li > 10) {
+    print("You're popular!")
+  } else {
+    print("Be more visible!")
+  }
+  
+  # Add if statement with break
+  if(li >16){
+    print("This is ridiculous, I'm outta here!")
+    break
+  }
+    
+  # Add if statement with next
+  if(li <5){
+    print("This is too embarrassing!")
+    next
+  }
+  
+  print(li)
+}
+```
+
+##For loop from scratch
+
+```{r}
+# Pre-defined variables
+rquote <- "r's internals are irrefutably intriguing"
+chars <- strsplit(rquote, split = "")[[1]]
+
+# Initialize rcount
+rcount <- 0 
+
+# Finish the for loop
+for (char in chars) {
+  if (char=="r"){
+      rcount<- rcount+1
+  } else if(char=="u"){   #Want to break loop when we hit 'u'
+      break
+  }
+  }
+
+
+# Print out rcount
+print(rcount)
+```
+
