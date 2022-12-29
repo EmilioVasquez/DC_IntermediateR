@@ -1,0 +1,194 @@
+---
+title: "Chapter 3 - Functions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Creating your own functions:
+
+In general:
+
+```{r}
+my_fun <- function(arg1, arg2) {
+  body
+}
+```
+
+Examples:
+
+```{r}
+# Create a function pow_two()
+pow_two <- function(x) {
+    x^2
+}
+
+
+# Use the function
+pow_two(12)
+
+# Create a function sum_abs()
+sum_abs <- function(x,y){
+    sum(abs(x)+abs(y))
+}
+
+
+# Use the function
+sum_abs(-2,3)
+```
+
+
+Can write functions that do not require any input:
+```{r}
+throw_die <- function() {
+  number <- sample(1:6, size = 1)
+  number
+}
+
+throw_die()
+```
+
+Example: 
+
+
+```{r}
+# Define the function hello()
+hello <- function(){
+    print("Hi there!")
+    return(TRUE)
+}
+
+
+
+
+# Call the function hello()
+hello()
+```
+
+Can also add in optional arguments:
+```{r}
+# Finish the pow_two() function
+pow_two <- function(x, print_info=TRUE) {
+  y <- x ^ 2
+  if(print_info==TRUE){
+    print(paste(x, "to the power two equals", y))
+  }
+  return(y)
+
+  
+}
+
+
+pow_two(20)
+```
+
+two_dice <- function() {
+  possibilities <- 1:6
+  dice1 <- sample(possibilities, size = 1)
+  dice2 <- sample(possibilities, size = 1)
+  dice1 + dice2
+}
+
+two_dice()
+
+
+## R passes arguments by value:
+
+
+The title gives it away already: R passes arguments by value. What does this mean? Simply put, it means that an R function cannot change the variable that you input to that function. Let's look at a simple example (try it in the console):
+
+
+
+
+```{r}
+
+triple <- function(x) {
+  x <- 3*x
+  x
+}
+a <- 5
+triple(a)
+a
+```
+
+```{r}
+
+# The linkedin and facebook vectors have already been created for you
+
+
+facebook <- c(17,7,5,16,8,13,14)
+facebook
+
+linkedin <- c(16,9,13,5,2,17,14)
+linkedin
+
+# Define the interpret function
+interpret <- function(num_views) {
+  if (num_views > 15) {
+    print("You're popular!")
+    return(num_views)
+
+  } else {
+    print("Try to be more visible!")
+    return(0)
+
+  }
+}
+
+# Call the interpret function twice for specific indices
+interpret(linkedin[1])
+
+interpret(facebook[2])
+
+```
+
+## Adding in a for loop
+
+Here we start to add some for loops
+
+```{r}
+
+# The linkedin and facebook vectors have already been created for you
+linkedin <- c(16, 9, 13, 5, 2, 17, 14)
+facebook <- c(17, 7, 5, 16, 8, 13, 14)
+
+# The interpret() can be used inside interpret_all()
+interpret <- function(num_views) {
+  if (num_views > 15) {
+    print("You're popular!")
+    return(num_views)
+  } else {
+    print("Try to be more visible!")
+    return(0)
+  }
+}
+
+# Define the interpret_all() function
+# views: vector with data to interpret
+# return_sum: return total number of views on popular days?
+interpret_all <- function(views, return_sum=TRUE) {
+  count <- 0
+
+  for (v in views) {
+    count<- count+ interpret(v)
+  }
+
+  if (return_sum== TRUE) {
+  return(count)   
+  } else {
+NULL
+  }
+}
+
+# Call the interpret_all() function on both linkedin and facebook
+
+interpret_all(facebook)
+
+interpret_all(linkedin)
+
+
+```
+
